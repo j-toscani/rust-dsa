@@ -3,6 +3,15 @@ pub struct Node<T> {
     next: Option<Box<Node<T>>>,
 }
 
+impl<T> Node<T> {
+    pub fn new(value: T) -> Node<T> {
+        return Node {
+            value,
+            next: None
+        }
+    }
+}
+
 pub struct NodeQueue<T> {
     head: Option<Node<T>>,
     length: u32,
@@ -16,10 +25,7 @@ impl<T> NodeQueue<T> {
         };
     }
     pub fn queue(&mut self, item: T) -> () {
-        let node = Node {
-            value: item,
-            next: None,
-        };
+        let node = Node::new(item);
         self.length = self.length + 1;
 
         match self.head {
@@ -67,4 +73,9 @@ impl<T> NodeQueue<T> {
             None => None,
         };
     }
+}
+
+#[cfg(test)]
+mod tests {
+
 }
