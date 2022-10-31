@@ -2,6 +2,8 @@ mod linear_search;
 mod binary_search;
 mod bubble_sort;
 
+mod node_stack;
+
 fn main() {
     let mut haystack1 = [1,4,5,32,55,2,3];
     let haystack2 = ["e", "b", "c"];
@@ -17,4 +19,12 @@ fn main() {
 
     bubble_sort::sort(&mut haystack1);
     println!("{:?}", &haystack1);
+
+    let mut stack = node_stack::Stack::new();
+    stack.push(45);
+    stack.push(5);
+    stack.push(41);
+    let popped = stack.pop();
+
+    println!("{:?}", popped);
 }
