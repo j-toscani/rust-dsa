@@ -1,22 +1,20 @@
-mod list_queue;
-mod node_queue;
+mod linear_search;
+mod binary_search;
+mod bubble_sort;
 
 fn main() {
-    let mut q = list_queue::Queue::new();
-    q.queue(16);
-    q.queue(32);
+    let mut haystack1 = [1,4,5,32,55,2,3];
+    let haystack2 = ["e", "b", "c"];
 
-    let first = q.deque().unwrap();
-    let second = q.deque().unwrap();
-    println!("Elements in Order: {}, {}", first, second);
+    let found1 = binary_search::search_binary(&haystack1, 9);
+    let found2 = linear_search::search_linear(&haystack2, "e");
+    let number: i32 = 5/2;  
+    
+    println!("{}", number);
+    println!("The element is in haystack: {}", found1);
+    println!("The element is in haystack: {}", found2);
+    println!("{:?}", &haystack1);
 
-    let mut nq = node_queue::NodeQueue::new();
-    nq.queue(33);
-    nq.queue(4);
-    println!("The value is: {}", nq.peek().unwrap());
-
-    let number = nq.deque().unwrap();
-    println!("Dequeued {}", &number);
-
-    println!("New head is {:?}", nq.peek())
+    bubble_sort::sort(&mut haystack1);
+    println!("{:?}", &haystack1);
 }
